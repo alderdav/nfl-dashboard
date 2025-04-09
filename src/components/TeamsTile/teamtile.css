@@ -33,6 +33,13 @@ img {
     width: 50%;
 }
 
+.__margin-left {
+    margin-left: 5px;
+}
+
+.__margin-right {
+    margin-right: 5px;
+}
 
 /* Not in use */
 

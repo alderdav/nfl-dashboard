@@ -22,19 +22,20 @@ export default function TeamTile({name, team, logo, division, conference, colors
     }
 
     return(
-        <div className="team-tile __round-corners">
+        <div className="team-tile __round-corners __margin_right">
             <div className=" __half">
-                <p>{name}</p>
-                <p>Conference: {conference}</p>
-                <p>Divsion: {division}</p>
+                <p>{name} <br/>
+                    Conference: {conference} <br/>
+                    Divsion: {division} <br/>
+                </p>
                 <div className="colors __round-corners __flex-col">
-                    <span style={{backgroundColor: colors[0], height: "25%"}}>{colors[0]}</span>
-                    <span style={{backgroundColor: colors[1], height: "25%"}}>{colors[1]}</span>
-                    <span style={{backgroundColor: colors[2], height: "25%"}}>{colors[2]}</span>
-                    <span style={{backgroundColor: colors[3], height: "25%"}}>{colors[3]}</span>
+                    <span style={{backgroundColor: colors[0], height: "25%"}}></span>
+                    <span style={{backgroundColor: colors[1], height: "25%"}}></span>
+                    <span style={{backgroundColor: colors[2], height: "25%"}}></span>
+                    <span style={{backgroundColor: colors[3], height: "25%"}}></span>
                 </div>
             </div>
-            <div className="__flex-col __half">
+            <div className="__flex-col __half __margin-left">
                 <img src={logo} />
                 <div className="__flex-col">
                     <button onClick={() => getTeamInfo(2019, team)}>Get Roster Info</button>

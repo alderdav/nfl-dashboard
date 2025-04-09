@@ -1,0 +1,10 @@
+.__roster-modal {
+    width: 40%;
+    background-color: green;
+    padding: 5px;
+}
+
+.__roster-modal h1 {
+    display: flex;
+    justify-content: center;
+}

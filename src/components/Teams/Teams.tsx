@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import TeamTile from "./TeamTile";
-import { Team } from "../interfaces/Team";
+import TeamTile from "../TeamsTile/TeamTile";
+import { Team } from "../../interfaces/Team";
 import './teams.css';
 
 interface TeamsProps {

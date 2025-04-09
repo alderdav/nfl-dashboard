@@ -1,29 +1,19 @@
 import { useEffect, useState } from "react"
-import Teams from "./components/Teams";
+import Teams from "./components/Teams/Teams";
+import NavBar from "./components/NavBar/NavBar";
+import RosterModal from "./components/RosterModal/RosterModal";
 
 export default function App() {
-  const [seasons, setSeasons] = useState<number[]>();
   const [season, setSeason] = useState<number>();
-
-  useEffect(()=> {
-    fetch('http://localhost:3000/season/all-seasons')
-      .then(response => {
-        response.json()
-          .then(seasons => {
-              setSeasons(seasons.seasons);
-          })
-      })
-  }, []);
+  const handleSeason = (season: number) => {
+    setSeason(season)
+  };
 
   return (
     <>
-      <label htmlFor="season">Choose Season:</label>
-      <select id="season" onChange={(e) => setSeason(Number(e.target.value))}>
-        {seasons?.map((season, idx) => (
-          <option value={season} key={idx}>{season}</option>
-        ))}
-      </select>
-      {season !== undefined && <Teams season={season}/>}
+      {/* <NavBar handleSeason={handleSeason}/>
+      {season !== undefined && <Teams season={season}/>} */}
+      <RosterModal team={'ATL'}/>
     </>
   )
 }
