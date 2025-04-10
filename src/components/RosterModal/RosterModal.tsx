@@ -1,8 +1,10 @@
 import { useState, useEffect} from 'react';
+import {createPortal} from 'react-dom';
 import './rostermodal.css'
 
 interface Props {
     team: string;
+    handleClose: () => void;
 }
 
 interface Player {
@@ -17,7 +19,7 @@ interface Roster {
     players: Player[];
 }
 
-export default function RosterModal({team}: Props) {
+export default function RosterModal({team, handleClose}: Props) {
     const [roster, setRoster] = useState<Roster>();
 
     useEffect(() => {
@@ -31,21 +33,30 @@ export default function RosterModal({team}: Props) {
         })
     }, [])
 
-    return (
-        <div className="__roster-modal">
-            <h1>{team} Roster:</h1>
-            <table>
-                <thead>
-                    <th>Name</th>
-                    <th>Position</th>
-                </thead>
-                {roster?.players.map((player, idx) => (
-                    <tr>
-                        <td>{player.name}</td>
-                        <td>{player.position}</td>
-                    </tr>
-                ))}
-            </table>
-        </div>
+    return createPortal(
+        <>
+            <div className="__overlay" />
+            <div className="__roster-modal">
+                <button onClick={handleClose}>Close</button>
+                <h1>{team} Roster:</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {roster?.players.map((player, idx) => (
+                            <tr key={idx}>
+                                <td>{player.name}</td>
+                                <td>{player.position}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </>,
+        document.getElementById("portal")!
     )
 }

@@ -24,7 +24,7 @@ export default function Teams({season}: TeamsProps) {
     return(
         <div className="container">
             {teams?.map((team, idx) => 
-                <TeamTile name={team.fullName} team={team.team} logo={team.team_logo} division={team.division} colors={team.colors}  conference={team.conference} key={idx} />
+                <TeamTile name={team.fullName} team={team.team} logo={team.team_logo} division={team.division} colors={team.colors} conference={team.conference} key={idx} />
             )}
         </div>
     )

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import RosterModal from '../RosterModal/RosterModal';
 import './teamtile.css'
 
 interface TeamTileProps {
@@ -10,15 +12,10 @@ interface TeamTileProps {
 }
 
 export default function TeamTile({name, team, logo, division, conference, colors}: TeamTileProps) {
+    const [rosterVisibility, setRosterVisibility] = useState<boolean>(false);
 
-    const getTeamInfo = (season: number, team: string) => {
-        fetch(`http://localhost:3000/season/${season}/team/${team}/roster`)
-        .then(response => {
-          response.json()
-            .then(roster => {
-                console.log(roster)
-            })
-        })
+    const handleClose = () => {
+        setRosterVisibility(false);
     }
 
     return(
@@ -38,11 +35,11 @@ export default function TeamTile({name, team, logo, division, conference, colors
             <div className="__flex-col __half __margin-left">
                 <img src={logo} />
                 <div className="__flex-col">
-                    <button onClick={() => getTeamInfo(2019, team)}>Get Roster Info</button>
+                    <button onClick={() => setRosterVisibility(true)}>Get Roster Info</button>
                     <button>Go To Season</button>
                 </div>
             </div>
-
+            {rosterVisibility && <RosterModal team={team} handleClose={handleClose}/>}
         </div>
     );
 }

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Teams from "./components/Teams/Teams";
 import NavBar from "./components/NavBar/NavBar";
-import RosterModal from "./components/RosterModal/RosterModal";
 
 export default function App() {
   const [season, setSeason] = useState<number>();
@@ -11,9 +10,8 @@ export default function App() {
 
   return (
     <>
-      {/* <NavBar handleSeason={handleSeason}/>
-      {season !== undefined && <Teams season={season}/>} */}
-      <RosterModal team={'ATL'}/>
+      <NavBar handleSeason={handleSeason}/>
+      {season !== undefined && <Teams season={season}/>}
     </>
   )
 }
