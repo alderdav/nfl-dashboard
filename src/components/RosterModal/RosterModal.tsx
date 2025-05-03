@@ -48,7 +48,7 @@ export default function RosterModal({team, handleClose}: Props) {
                     </thead>
                     <tbody>
                         {roster?.players.map((player, idx) => (
-                            <tr key={idx}>
+                            <tr key={idx} className="__player-roster-row">
                                 <td>{player.name}</td>
                                 <td>{player.position}</td>
                             </tr>

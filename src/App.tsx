@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Teams from "./components/Teams/Teams";
 import NavBar from "./components/NavBar/NavBar";
+import PlayerStats from "./components/PlayerStats/PlayerStats";
 
 export default function App() {
   const [season, setSeason] = useState<number>();
@@ -12,6 +13,7 @@ export default function App() {
     <>
       <NavBar handleSeason={handleSeason}/>
       {season !== undefined && <Teams season={season}/>}
+      {/* <PlayerStats playerId="00-0034857" /> */}
     </>
   )
 }
